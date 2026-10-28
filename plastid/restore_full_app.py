@@ -19,6 +19,7 @@ if source is None:
 html=source.read_text(encoding="utf-8")
 # Use the original full interface, preserving all pages and controls.
 html=html.replace("MakerPhone", "Plastid").replace("makerphone", "plastid")
+html=html.replace("localStorage.getItem('plastid-lab')||'{}'", "(localStorage.getItem('plastid-lab')||localStorage.getItem('makerphone-lab'))||'{}'")
 # Preserve older localStorage and migrate only when Plastid storage is empty.
 if "localStorage.getItem('plastid-lab')" in html and "localStorage.getItem('makerphone-lab')" not in html:
  html=html.replace("localStorage.getItem('plastid-lab')", "(localStorage.getItem('plastid-lab')||localStorage.getItem('makerphone-lab'))",1)
