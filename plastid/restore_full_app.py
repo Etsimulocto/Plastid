@@ -85,6 +85,12 @@ if begin>=0 and finish>begin:
 target=dest/"plastid_lab.html"
 if target.exists():
  shutil.copy2(target,target.with_suffix(".html.previous"))
+# Inject the self-contained appearance editor without replacing the phone app.
+html=html.replace('</body>', '<script src="/ui_editor.js"></script></body>')
+# The canvas is pixel-rendered: customize its basic palette and text scale separately.
+html=html.replace("ctx.fillStyle='#071724';ctx.fillRect(0,0,w,h)", "ctx.fillStyle=(window.plastidScreenTheme?.bg||'#071724');ctx.fillRect(0,0,w,h)")
+html=html.replace("ctx.fillStyle='#e6f6ff';ctx.font='bold 11px monospace'", "ctx.fillStyle=(window.plastidScreenTheme?.color||'#e6f6ff');ctx.font='bold '+Math.max(10,Math.round((window.plastidScreenTheme?.fontSize||18)*.62))+'px monospace'")
+html=html.replace("ctx.font='bold 17px sans-serif'", "ctx.font='bold '+(window.plastidScreenTheme?.fontSize||18)+'px sans-serif'")
 target.write_text(html,encoding="utf-8")
 # Put the known v0.2 localhost serial server next to the restored UI.
 server_source=source.parent/"pi_bridge_server.py"
