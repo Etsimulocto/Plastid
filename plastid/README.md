@@ -54,3 +54,17 @@ This separate bench supplies firmware identity, status and diagnostics plus *sim
 - Offline maps, Phone tethering, Bluetooth voice, battery/solar power, physical docks and robust backups are **proposed**, not verified.
 
 **Security:** keep Pi app bound to localhost `127.0.0.1` until authentication and network security are engineered. Do not put API keys or personal contacts in this repository.
+
+## Raspberry Pi desktop icon and one-click launcher
+
+A spiral-themed Plastid launcher icon (SVG recreation of the approved design) and desktop/menu shortcut are provided in `plastid/`.
+
+```bash
+cd ~/Plastid
+git pull origin setup/makerphone-lab
+python3 plastid/install_desktop.py
+```
+
+This installs **Plastid.desktop** to `~/Desktop` and the app menu, installs `~/.local/share/icons/plastid.svg`, and creates `~/.local/bin/plastid-launch`. Double-click **Plastid**; on some Pi desktops select **Allow Launching** on first use. If the existing full app is running, the launcher opens it in the browser; otherwise it tries to start `plastid/pi_bridge_server.py --port /dev/ttyACM0` and then opens `http://127.0.0.1:8765`. It **does not replace the full HTML app or flash firmware**. The bridge must already be installed for the app to launch.
+
+Troubleshooting: `~/.local/state/plastid/launcher.log`. The SVG is a vector adaptation intended for small Linux desktop icons, not pixel-identical to the generated artwork.
