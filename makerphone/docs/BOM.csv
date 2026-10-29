@@ -1,0 +1,11 @@
+Component,Target or candidate,Quantity,Status,Evidence/next step
+Compute,ESP32-S3 or Raspberry Pi Zero 2 W,1,unverified,Architecture decision open
+TFT display,2.4 inch 320x240 landscape target,1,unverified,Identify module controller and voltage
+Keypad,3x4 phone keypad,1,unverified,Verify exact version and mounting
+Navigation,Qwiic 5-way boards,2,unverified,Verify part and unique I2C addresses
+Action buttons,Call and End,2,unverified,Choose switches and caps
+Modem,Separate LTE unit,1,unverified,Validate exact part with AT&T test SIM
+Battery and power,LiPo charger protection regulation,1,unverified,Power budget and safety review
+Audio,Bob plus mic speaker amplifier,TBD,unverified,Determine topology and location
+Dock,Four magnetic contacts and microSD archive,1,unverified,Power-data pin and sync protocol TBD
+Enclosure,Repairable flip case and hinge,1,unverified,Mechanical design not frozen
